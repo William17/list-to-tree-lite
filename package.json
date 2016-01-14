@@ -1,0 +1,28 @@
+{
+  "name": "list-to-tree-lite",
+  "version": "0.1.0",
+  "description": "convert list to tree-list",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/William17/list-to-tree-lite.git"
+  },
+  "keywords": [
+    "list",
+    "to",
+    "tree"
+  ],
+  "author": {
+    "name": "William Leung",
+    "email": "superbill2012@qq.com",
+    "url": "https://github.com/William17"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/William17/list-to-tree-lite/issues"
+  },
+  "homepage": "https://github.com/William17/list-to-tree-lite#readme"
+}
