@@ -69,14 +69,73 @@ function flattern(tree, options) {
   return fla(tree);
 }
 
-var keys = {
-  idKey: idKey,
-  parentKey: parentKey,
-  childrenKey: childrenKey
-}
-var originTree = genTree(10, keys);
-var list = flattern(JSON.parse(JSON.stringify(originTree)), keys);
-var tree = listToTree(JSON.parse(JSON.stringify(list)), keys);
 
-assert.deepEqual(originTree, tree);
+function testRandomTree() {
+  var keys = {
+    idKey: idKey,
+    parentKey: parentKey,
+    childrenKey: childrenKey
+  }
+  var originTree = genTree(10, keys);
+  var list = flattern(JSON.parse(JSON.stringify(originTree)), keys);
+  var tree = listToTree(JSON.parse(JSON.stringify(list)), keys);
+
+  assert.deepEqual(originTree, tree);
+  return true;
+}
+
+
+function testCustomTree() {
+  var list = [{
+          id: 6,
+          any: 'opps'
+      }, {
+          id: 2,
+          parent: 5,
+          any: 'foo',
+      }, {
+          id: 1,
+          parent: 2,
+          any: 'bar'
+      }, {
+          id: 5,
+          any: 'hello'
+      }, {
+          id: 3,
+          parent: 2,
+          any: 'other'
+      }];
+
+  var tree = [{
+          id: 6,
+          any: 'opps',
+          children: []
+      }, {
+          id: 5,
+          any: 'hello',
+          children: [{
+              id: 2,
+              parent: 5,
+              any: 'foo',
+              children: [{
+                  id: 1,
+                  parent: 2,
+                  any: 'bar',
+                  children: []
+              }, {
+                  id: 3,
+                  parent: 2,
+                  any: 'other',
+                  children: []
+              }]
+          }]
+      }];
+  assert.deepEqual(listToTree(list), tree);
+  return true;
+}
+
+assert.ok(testRandomTree());
+assert.ok(testCustomTree()); 
+
+
 console.log('✓ passed');
